@@ -1,20 +1,8 @@
 import FormLayout from "../../components/FormLayout";
 import Head from "next/head";
-import { useState } from "react";
 import Router from "next/router";
+import useInput from "../../hooks/useInput";
 
-const useInput = (defaultValue) => {
-  const [value, setValue] = useState(defaultValue);
-  const onChange = (e) => {
-    const { value } = { ...e.target };
-    setValue(value);
-  };
-
-  return {
-    value,
-    onChange,
-  };
-};
 
 const Login = () => {
   // const [userid, setUserid] = useState("");

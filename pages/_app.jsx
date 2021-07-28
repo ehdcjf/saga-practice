@@ -1,8 +1,8 @@
 import "../index.css";
 import Head from "next/head";
-import Store, { initialState } from "./store/context";
+import Store, { initialState } from "../store/context";
 import { useContext, useReducer } from "react";
-import { reducer } from "./store/reducer";
+import { reducer } from "../store/reducer";
 
 const App = ({ Component }) => {
   const globalContext = useContext(Store);

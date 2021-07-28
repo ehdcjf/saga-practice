@@ -67,3 +67,14 @@ import Link from 'next/link'
 pages > \_document.jsx
 
 # babelrc
+
+
+
+
+
+# npm install next-redux-wrapper 
+# npm install redux
+# npm install react-redux
+# npm install redux-devtools-extension
+
+1.store > configureStore.js

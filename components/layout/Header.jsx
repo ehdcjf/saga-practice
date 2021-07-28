@@ -2,7 +2,8 @@ import Link from "next/link";
 import NavToggle from "../NavToggle";
 import Styled from "styled-components";
 import { useContext } from "react";
-import Store from "../../pages/store/context";
+import Store from "../../store/context";
+
 
 const HeaderContainer = Styled.div`
     display:flex;
