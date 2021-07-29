@@ -1,52 +1,21 @@
-const initialState = { 
-  isLogin:false,
-  user:{
-    isLogin:false,
-  },
-  post:{
+import { HYDRATE } from "next-redux-wrapper";
+import { combineReducers } from "redux";
+import user from './user'
+import category from './category'
 
-  },
-  comment:{
-
-  },
-  category:{
-
-  }
-}
-
-const USER_LOGIN = 'USER_LOGIN'
-const USER_LOGOUT = 'USER_LOGOUT'
-
-export const USER_LOGIN_ACTION = (data) => { 
-  return{ 
-    type:USER_LOGIN,
-    data, 
-  }
-}
-
-export const USER_LOGOUT_ACTION = ( ) => { 
-  return{ 
-    type:USER_LOGOUT,
-  }
-}
-
-const reducer = (state=initialState,action) =>{ 
-  switch(action.type){ 
-    case USER_LOGIN: 
-      return {
-        ...state,
-        user:{
-          ...state.user,
-          isLogin:true,
+const reducer = combineReducers({
+  index:(state={},action)=>{
+    switch(action.type){ 
+      case HYDRATE:
+        return{
+          ...state,
+          ...action.payload
         }
-      }
-    case USER_LOGOUT: 
-      return state 
-    default:
-      return state; 
-  
-  }
-
-}
+      default:
+        return state
+    }
+  },
+  user,category,
+})
 
 export default reducer

@@ -2,27 +2,20 @@ import FormLayout from "../../components/FormLayout";
 import Head from "next/head";
 import Router from "next/router";
 import useInput from "../../hooks/useInput";
+import { useDispatch } from "react-redux";
+import { UserLoginAction } from "../../reducers/user";
 
 
 const Login = () => {
-  // const [userid, setUserid] = useState("");
-  // const [userpw, setUserpw] = useState("");
-
-  // const ChangeUserid = (e) => {
-  //   const { value } = { ...e.target };
-  //   setUserid(value);
-  // };
-
-  // const ChangeUserpw = (e) => {
-  //   const { value } = { ...e.target };
-  //   setUserpw(value);
-  // };
+  const dispatch = useDispatch();
 
   const userid = useInput("");
   const userpw = useInput("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(UserLoginAction())
+    
     userid.value === "kkk" && userpw.value === "1234"
       ? Router.push("/")
       : alert("아이디와 패스워드가 다릅니다.");

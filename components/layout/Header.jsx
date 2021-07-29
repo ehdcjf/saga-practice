@@ -1,8 +1,7 @@
 import Link from "next/link";
 import NavToggle from "../NavToggle";
 import Styled from "styled-components";
-import { useContext } from "react";
-import Store from "../../store/context";
+import { useSelector } from "react-redux";
 
 
 const HeaderContainer = Styled.div`
@@ -29,10 +28,45 @@ const Gnb = Styled.ul`
     }
 `;
 
+
+const LoginComponent = () =>{
+  return(
+    <>
+      <li>
+        <Link href="/user/login">
+          <a>로그인</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/user/join">
+          <a>회원가입</a>
+        </Link>
+      </li>
+    </>
+  )
+}
+
+
+const LogoutComponent = () =>{ 
+  return (
+    <>
+      <li>
+        <Link href="/user/logout">
+          <a>로그아웃</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/user/join">
+          <a>회원정보</a>
+        </Link>
+      </li>
+    </>
+  )
+}
+
 const Header = () => {
-  const globalStore = useContext(Store);
-  const { IsLogin } = globalStore.state;
-  console.log(IsLogin);
+  const IsLogin = useSelector((state)=>state.user.IsLogin)
+  console.log(IsLogin)
 
   return (
     <HeaderContainer>
@@ -49,33 +83,7 @@ const Header = () => {
             <a>글쓰기</a>
           </Link>
         </li>
-        {IsLogin === false ? (
-          <>
-            <li>
-              <Link href="/user/login">
-                <a>로그인</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/user/join">
-                <a>회원가입</a>
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link href="/user/login">
-                <a>로그아웃</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/user/join">
-                <a>회원정보</a>
-              </Link>
-            </li>
-          </>
-        )}
+        {IsLogin === false ? <LoginComponent /> : <LogoutComponent /> }
       </Gnb>
       <NavToggle />
     </HeaderContainer>
