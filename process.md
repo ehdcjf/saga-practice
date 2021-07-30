@@ -83,3 +83,8 @@ pages > \_document.jsx
 
 
 2. reducers > index.js
+
+
+
+
+# npm install redux-thunk
